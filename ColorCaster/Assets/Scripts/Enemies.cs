@@ -13,10 +13,25 @@ public class Enemies : MonoBehaviour
     Transform target;
     Vector2 moveDirection;
 
+    //color enemy types (for now just do RGB)
+    string whatColor;
+    [SerializeField] string[] colors;
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        whatColor = colors[Random.Range(0,colors.Length)];
+        if(whatColor == "red"){
+            GetComponent<SpriteRenderer>().color = Color.red;
+        }
+        else if(whatColor == "green"){
+            GetComponent<SpriteRenderer>().color = Color.green;
+        }
+        else if(whatColor == "blue"){
+            GetComponent<SpriteRenderer>().color = Color.blue;
+        }
+        
     }
 
     // Start is called before the first frame update
@@ -64,5 +79,12 @@ public class Enemies : MonoBehaviour
         }
     }
 
-   
+    public void TriggerColorAction(string colorSent){
+        if(colorSent == whatColor){
+            //trigger destruction of enemy
+            gameObject.SetActive(false);
+            ScoringRef.scoreValue += 10;
+        }
+    }
+
 }

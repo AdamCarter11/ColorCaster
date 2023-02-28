@@ -8,6 +8,7 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 /**
  * When creating your message listeners you need to implement these two methods:
@@ -18,6 +19,8 @@ public class SampleMessageListener : MonoBehaviour
 {
 
     [SerializeField] GameObject square;
+    //[SerializeField] Enemies enemyScript;
+    GameObject[] enemies;
 
     // Invoked when a line of data is received from the serial device.
     void OnMessageArrived(string msg)
@@ -30,6 +33,33 @@ public class SampleMessageListener : MonoBehaviour
         int green = int.Parse(splitRGBVals[1]);
         int blue = int.Parse(splitRGBVals[2]);
         print(red + " " + green + " " + blue);
+
+        //the 50 would be the threshold
+        if(red > green + 50 && red > blue + 50){
+            //red has been seen
+            enemies = GameObject.FindGameObjectsWithTag("enemy");
+            foreach(GameObject enemy in enemies){
+                enemy.GetComponent<Enemies>().TriggerColorAction("red");
+            }
+            //enemyScript.TriggerColorAction("red");
+        }
+        else if(green > red + 50 && green > blue + 50){
+            //green has been seen
+            enemies = GameObject.FindGameObjectsWithTag("enemy");
+            foreach(GameObject enemy in enemies){
+                enemy.GetComponent<Enemies>().TriggerColorAction("red");
+            }
+            //enemyScript.TriggerColorAction("green");
+        }
+        else if(blue > red + 50 && blue > green + 50){
+            //blue has been seen
+            enemies = GameObject.FindGameObjectsWithTag("enemy");
+            foreach(GameObject enemy in enemies){
+                enemy.GetComponent<Enemies>().TriggerColorAction("red");
+            }
+            //enemyScript.TriggerColorAction("blue");
+        }
+
         square.GetComponent<SpriteRenderer>().color = new Color((float)red/255, (float)green/255, (float)blue/255);
         print(square.GetComponent<SpriteRenderer>().color.r);
         //square.GetComponent<SpriteRenderer>().color = new Color(180,0,180);
