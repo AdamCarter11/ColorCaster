@@ -7,11 +7,14 @@ public class Enemies : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] private int health;
+    [SerializeField] ParticleSystem ps;
     public ScoringSystem ScoringRef;
 
     Rigidbody2D rb;
     Transform target;
     Vector2 moveDirection;
+    Camera cam;
+    float randoSpeedMulti;
 
     //color enemy types (for now just do RGB)
     string whatColor;
@@ -20,6 +23,7 @@ public class Enemies : MonoBehaviour
 
     private void Awake()
     {
+        randoSpeedMulti = Random.Range(.5f, 1.3f);
         rb = GetComponent<Rigidbody2D>();
         whatColor = colors[Random.Range(0,colors.Length)];
         if(whatColor == "red"){
@@ -40,6 +44,7 @@ public class Enemies : MonoBehaviour
         target = GameObject.Find("Player").transform;
 
         ScoringRef = FindObjectOfType<ScoringSystem>();
+        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     //Setting the enemy velocity
@@ -47,7 +52,7 @@ public class Enemies : MonoBehaviour
     {
         if(target)
         {
-            rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
+            rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed * randoSpeedMulti;
         }
     }
 
@@ -82,8 +87,10 @@ public class Enemies : MonoBehaviour
     public void TriggerColorAction(string colorSent){
         if(colorSent == whatColor){
             //trigger destruction of enemy
+            Instantiate(ps, transform.position, Quaternion.identity);
             gameObject.SetActive(false);
-            ScoringRef.scoreValue += 10;
+            ScoringRef.increaseMulti();
+            ScoringRef.increaseScore(10);
         }
     }
 

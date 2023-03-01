@@ -125,8 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 257c631984b0ef549a3cfa9deb724f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 1.5
   health: 10
+  ps: {fileID: 2197844961497070868, guid: 8267e4746f0fa9641b89366d2684d9ef, type: 3}
   ScoringRef: {fileID: 0}
   colors:
   - red

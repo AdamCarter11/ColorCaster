@@ -19,6 +19,9 @@ public class SampleMessageListener : MonoBehaviour
 {
 
     [SerializeField] GameObject square;
+    [SerializeField] GameObject projectile;
+    public ScoringSystem ScoringRef;
+    
     //[SerializeField] Enemies enemyScript;
     GameObject[] enemies;
 
@@ -35,28 +38,35 @@ public class SampleMessageListener : MonoBehaviour
         print(red + " " + green + " " + blue);
 
         //the 50 would be the threshold
-        if(red > green + 50 && red > blue + 50){
+        if(red > green + 35 && red > blue + 35){
+            //Instantiate(projectile, transform.position, Quaternion.identity);
             //red has been seen
+            ScoringRef.resetMulti();
             enemies = GameObject.FindGameObjectsWithTag("enemy");
             foreach(GameObject enemy in enemies){
                 enemy.GetComponent<Enemies>().TriggerColorAction("red");
             }
+            
             //enemyScript.TriggerColorAction("red");
         }
-        else if(green > red + 50 && green > blue + 50){
+        else if(green > red + 35 && green > blue + 35){
             //green has been seen
+            ScoringRef.resetMulti();
             enemies = GameObject.FindGameObjectsWithTag("enemy");
             foreach(GameObject enemy in enemies){
-                enemy.GetComponent<Enemies>().TriggerColorAction("red");
+                enemy.GetComponent<Enemies>().TriggerColorAction("green");
             }
+            
             //enemyScript.TriggerColorAction("green");
         }
-        else if(blue > red + 50 && blue > green + 50){
+        else if(blue > red + 35 && blue > green + 35){
             //blue has been seen
+            ScoringRef.resetMulti();
             enemies = GameObject.FindGameObjectsWithTag("enemy");
             foreach(GameObject enemy in enemies){
-                enemy.GetComponent<Enemies>().TriggerColorAction("red");
+                enemy.GetComponent<Enemies>().TriggerColorAction("blue");
             }
+            
             //enemyScript.TriggerColorAction("blue");
         }
 
