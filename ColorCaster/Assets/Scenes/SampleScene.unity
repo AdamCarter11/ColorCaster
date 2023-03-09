@@ -969,6 +969,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   projectile: {fileID: 0}
+  launcher: {fileID: 0}
+  projs: []
   ScoringRef: {fileID: 253573024}
 --- !u!4 &1431524742
 Transform:
