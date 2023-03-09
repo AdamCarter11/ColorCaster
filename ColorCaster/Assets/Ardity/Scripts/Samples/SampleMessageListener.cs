@@ -18,9 +18,13 @@ using System.Collections.Generic;
 public class SampleMessageListener : MonoBehaviour
 {
 
-    [SerializeField] GameObject square;
+    [SerializeField] GameObject player;
     [SerializeField] GameObject projectile;
+    [SerializeField] GameObject launcher;
+    [SerializeField] GameObject[] projs;
     public ScoringSystem ScoringRef;
+
+    List<string> colorSequence;
     
     //[SerializeField] Enemies enemyScript;
     GameObject[] enemies;
@@ -45,6 +49,7 @@ public class SampleMessageListener : MonoBehaviour
             enemies = GameObject.FindGameObjectsWithTag("enemy");
             foreach(GameObject enemy in enemies){
                 enemy.GetComponent<Enemies>().TriggerColorAction("red");
+                colorSequence.Add("r");
             }
             
             //enemyScript.TriggerColorAction("red");
@@ -55,6 +60,7 @@ public class SampleMessageListener : MonoBehaviour
             enemies = GameObject.FindGameObjectsWithTag("enemy");
             foreach(GameObject enemy in enemies){
                 enemy.GetComponent<Enemies>().TriggerColorAction("green");
+                colorSequence.Add("g");
             }
             
             //enemyScript.TriggerColorAction("green");
@@ -65,13 +71,50 @@ public class SampleMessageListener : MonoBehaviour
             enemies = GameObject.FindGameObjectsWithTag("enemy");
             foreach(GameObject enemy in enemies){
                 enemy.GetComponent<Enemies>().TriggerColorAction("blue");
+                colorSequence.Add("b");
             }
             
             //enemyScript.TriggerColorAction("blue");
         }
+        if(colorSequence.Count >= 3){
+            if(colorSequence[0] == "r" && colorSequence[1] == "r" && colorSequence[2] == "r"){
+                //cast fireball
+                //  aoe, low damage, damage overtime, medium speed
+            }
+            if(colorSequence[0] == "g" && colorSequence[1] == "g" && colorSequence[2] == "g"){
+                //cast vine pierce
+                // slow, piercing, medium damage straight line
+            }
+            if(colorSequence[0] == "b" && colorSequence[1] == "b" && colorSequence[2] == "b"){
+                //cast ice spear
+                //  fast, high damage, single target
+            }
+            if(colorSequence[0] == "r" && colorSequence[1] == "g" && colorSequence[2] == "g"){
+                //cast poison cloud
+                //  aoe, damage overtime in an area, low damage, slow
+            }
+            if(colorSequence[0] == "r" && colorSequence[1] == "b" && colorSequence[2] == "b"){
+                //cast lightning bolt
+                //  fast, chains, low damage
+            }
+            if(colorSequence[0] == "g" && colorSequence[1] == "b" && colorSequence[2] == "b"){
+                //cast snowball
+                //  piercing, high damage, slow (rolls)
+            }
+            if(colorSequence[0] == "r" && colorSequence[1] == "g" && colorSequence[2] == "b"){
+                //cast rainbow blast
+                //  damage overtime, piercing, fast
+            }
+            // rrr, ggg, bbb, rgg, rbb, gbb, rgb
 
-        square.GetComponent<SpriteRenderer>().color = new Color((float)red/255, (float)green/255, (float)blue/255);
-        print(square.GetComponent<SpriteRenderer>().color.r);
+            //for now to test, this will work
+            GameObject tempProj = Instantiate(projs[0], launcher.transform.position, Quaternion.identity);
+            Destroy(tempProj, 5f);
+            colorSequence.Clear();
+        }
+
+        player.GetComponent<SpriteRenderer>().color = new Color((float)red/255, (float)green/255, (float)blue/255);
+        print(player.GetComponent<SpriteRenderer>().color.r);
         //square.GetComponent<SpriteRenderer>().color = new Color(180,0,180);
     }
 

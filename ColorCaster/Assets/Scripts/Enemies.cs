@@ -23,7 +23,7 @@ public class Enemies : MonoBehaviour
 
     private void Awake()
     {
-        randoSpeedMulti = Random.Range(.5f, 1.3f);
+        randoSpeedMulti = Random.Range(.9f, 2.0f);
         rb = GetComponent<Rigidbody2D>();
         whatColor = colors[Random.Range(0,colors.Length)];
         if(whatColor == "red"){
