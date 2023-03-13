@@ -968,9 +968,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 253573021}
-  projectile: {fileID: 5650008737427694203, guid: f0a53ace9d8b83e4d9e747c67c3cf55e, type: 3}
+  projectile: {fileID: 6126065614926129867, guid: 6810a66ac977bfe4ea58b142b6ee592b, type: 3}
   launcher: {fileID: 1413126278}
-  projs: []
+  projs:
+  - {fileID: 6126065614926129867, guid: 6810a66ac977bfe4ea58b142b6ee592b, type: 3}
+  - {fileID: 8101228664349241180, guid: f511fe203ec63594eaf79609afd57df7, type: 3}
+  - {fileID: 5687558571059780796, guid: 5b7e2d8e1ba0f2744a1f50af92e930c2, type: 3}
   ScoringRef: {fileID: 253573024}
 --- !u!4 &1431524742
 Transform:

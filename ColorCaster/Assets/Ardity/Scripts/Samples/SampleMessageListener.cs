@@ -45,7 +45,7 @@ public class SampleMessageListener : MonoBehaviour
 
         
         //the 50 would be the threshold
-        if(red > green + 35 && red > blue + 35 && canAdd){
+        if(red > green + 65 && red > blue + 65 && canAdd){
             //Instantiate(projectile, transform.position, Quaternion.identity);
             //red has been seen
             
@@ -67,7 +67,7 @@ public class SampleMessageListener : MonoBehaviour
             }
             //enemyScript.TriggerColorAction("red");
         }
-        else if(green > red + 35 && green > blue + 35 && canAdd){
+        else if(green > red + 30 && green > blue + 30 && canAdd){
             //green has been seen
             
             ScoringRef.resetMulti();
@@ -87,7 +87,7 @@ public class SampleMessageListener : MonoBehaviour
             }
             //enemyScript.TriggerColorAction("green");
         }
-        else if(blue > red + 35 && blue > green + 35 && canAdd){
+        else if(blue > red + 30 && blue > green + 30 && canAdd){
             //blue has been seen
             
             ScoringRef.resetMulti();
@@ -115,14 +115,17 @@ public class SampleMessageListener : MonoBehaviour
             if(colorSeqArr[0] == "r" && colorSeqArr[1] == "r" && colorSeqArr[2] == "r"){
                 //cast fireball
                 //  aoe, low damage, damage overtime, medium speed
+                GameObject spawnProj = Instantiate(projs[0], launcher.transform.position, launcher.transform.rotation);
             }
             if(colorSeqArr[0] == "g" && colorSeqArr[1] == "g" && colorSeqArr[2] == "g"){
                 //cast vine pierce
                 // slow, piercing, medium damage straight line
+                GameObject spawnProj = Instantiate(projs[1], launcher.transform.position, launcher.transform.rotation);
             }
             if(colorSeqArr[0] == "b" && colorSeqArr[1] == "b" && colorSeqArr[2] == "b"){
                 //cast ice spear
                 //  fast, high damage, single target
+                GameObject spawnProj = Instantiate(projs[2], launcher.transform.position, launcher.transform.rotation);
             }
             if(colorSeqArr[0] == "r" && colorSeqArr[1] == "g" && colorSeqArr[2] == "g"){
                 //cast poison cloud
