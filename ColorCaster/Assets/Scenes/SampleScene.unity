@@ -967,9 +967,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a03027548d784348a5d2b1fbe819cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  projectile: {fileID: 0}
-  launcher: {fileID: 0}
+  player: {fileID: 253573021}
+  projectile: {fileID: 5650008737427694203, guid: f0a53ace9d8b83e4d9e747c67c3cf55e, type: 3}
+  launcher: {fileID: 1413126278}
   projs: []
   ScoringRef: {fileID: 253573024}
 --- !u!4 &1431524742
