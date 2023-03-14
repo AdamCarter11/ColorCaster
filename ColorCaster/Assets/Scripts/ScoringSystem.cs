@@ -9,7 +9,7 @@ public class ScoringSystem : MonoBehaviour
     [SerializeField] private Text ScoreValueUI;
     internal int scoreValue = 0;
     int multi = 1;
-    [SerializeField] int playerHealth;
+    [SerializeField] internal int playerHealth;
     Camera cam;
 
     private void Start() {

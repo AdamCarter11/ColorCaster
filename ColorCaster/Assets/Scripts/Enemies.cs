@@ -6,7 +6,7 @@ using UnityEngine;
 public class Enemies : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
-    [SerializeField] private int health;
+    [SerializeField] internal int health;
     [SerializeField] ParticleSystem ps;
     public ScoringSystem ScoringRef;
 
