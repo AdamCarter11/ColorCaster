@@ -9,6 +9,7 @@ public class ForceField : MonoBehaviour
     private bool isForceField = false;
     private float forceFieldTimer = 0;
     private int forceFieldValue = 100;
+    
 
 
     //private float shield
@@ -24,13 +25,18 @@ public class ForceField : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        slider = FindObjectOfType<ForceFieldSlider>();
+
         slider.SetMaxForceField(forceFieldValue);
+
     }
 
     // Update is called once per frame
     void Update()
     {
         ForceFieldFunctionality();
+
+        slider.SetForceFieldValue(forceFieldValue);
     }
 
     void ForceFieldFunctionality()
@@ -42,7 +48,7 @@ public class ForceField : MonoBehaviour
 
             forceFieldValue -= 10;
 
-            slider.SetForceFieldValue(forceFieldValue);
+            
 
            
 

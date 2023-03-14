@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class ForceFieldSlider : MonoBehaviour
 {
-     private Slider slider;
+    private Slider slider;
 
     private void Start()
     {
         slider = GetComponent<Slider>();
     }
+
+    
 
     public void SetMaxForceField(int Value)
     {
