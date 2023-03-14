@@ -1262,10 +1262,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a03027548d784348a5d2b1fbe819cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  projectile: {fileID: 0}
-  launcher: {fileID: 0}
-  projs: []
+  player: {fileID: 253573021}
+  projectile: {fileID: 6126065614926129867, guid: 6810a66ac977bfe4ea58b142b6ee592b, type: 3}
+  launcher: {fileID: 1413126278}
+  projs:
+  - {fileID: 6126065614926129867, guid: 6810a66ac977bfe4ea58b142b6ee592b, type: 3}
+  - {fileID: 8101228664349241180, guid: f511fe203ec63594eaf79609afd57df7, type: 3}
+  - {fileID: 5687558571059780796, guid: 5b7e2d8e1ba0f2744a1f50af92e930c2, type: 3}
   ScoringRef: {fileID: 253573024}
 --- !u!4 &1431524742
 Transform:

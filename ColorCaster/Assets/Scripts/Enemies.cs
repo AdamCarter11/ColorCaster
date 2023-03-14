@@ -28,12 +28,21 @@ public class Enemies : MonoBehaviour
         whatColor = colors[Random.Range(0,colors.Length)];
         if(whatColor == "red"){
             GetComponent<SpriteRenderer>().color = Color.red;
+            health = 5;
+            moveSpeed = moveSpeed * .5f;
+            transform.localScale *= 2;
         }
         else if(whatColor == "green"){
             GetComponent<SpriteRenderer>().color = Color.green;
+            health = 3;
+            moveSpeed = moveSpeed * .8f;
+            transform.localScale *= 1.2f;
         }
         else if(whatColor == "blue"){
             GetComponent<SpriteRenderer>().color = Color.blue;
+            health = 1;
+            moveSpeed = moveSpeed * 1.2f;
+            transform.localScale *= .7f;
         }
         
     }
@@ -93,5 +102,11 @@ public class Enemies : MonoBehaviour
             ScoringRef.increaseScore(10);
         }
     }
-
+    public void TakeDamage(int damage){
+        health -= damage;
+        if(health < 0){
+            gameObject.SetActive(false);
+            ScoringRef.scoreValue += 10;
+        }
+    }
 }
