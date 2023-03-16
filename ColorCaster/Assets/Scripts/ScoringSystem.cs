@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class ScoringSystem : MonoBehaviour
 {
     [SerializeField] private Text ScoreValueUI;
+    [SerializeField] private Text healthText;
     internal int scoreValue = 0;
     int multi = 1;
     [SerializeField] internal int playerHealth;
@@ -17,6 +18,7 @@ public class ScoringSystem : MonoBehaviour
         if(!PlayerPrefs.HasKey("highscore")){
             PlayerPrefs.SetInt("highscore", 0);
         }
+        healthText.text = "Health: " + playerHealth;
     }
 
     // Update is called once per frame
@@ -37,10 +39,12 @@ public class ScoringSystem : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("enemy")){
             cam.GetComponent<ScreenShake>().TriggerShake();
+            resetMulti();
             StartCoroutine(backgroundColor());
             //Destroy(other.gameObject);
             other.gameObject.SetActive(false);
             playerHealth--;
+            healthText.text = "Health: " + playerHealth;
             if(playerHealth <= 0){
                 //player loses
                 PlayerPrefs.SetInt("score", scoreValue);

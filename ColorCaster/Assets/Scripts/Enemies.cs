@@ -105,8 +105,11 @@ public class Enemies : MonoBehaviour
     public void TakeDamage(int damage){
         health -= damage;
         if(health < 0){
-            gameObject.SetActive(false);
             ScoringRef.scoreValue += 10;
+            Instantiate(ps, transform.position, Quaternion.identity);
+            ScoringRef.increaseMulti();
+            ScoringRef.increaseScore(10);
+            gameObject.SetActive(false);
         }
     }
 }

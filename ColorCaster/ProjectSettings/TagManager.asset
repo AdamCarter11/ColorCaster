@@ -8,6 +8,13 @@ TagManager:
   - Proj
   - fireball
   - iceSpear
+  - rrg
+  - bbg
+  - ggb
+  - bbr
+  - ggr
+  - rrb
+  - rgb
   layers:
   - Default
   - TransparentFX

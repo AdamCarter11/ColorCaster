@@ -22,7 +22,7 @@ public class SampleMessageListener : MonoBehaviour
     [SerializeField] GameObject projectile;
     [SerializeField] GameObject launcher;
     [SerializeField] GameObject[] projs;
-    public ScoringSystem ScoringRef;
+    //public ScoringSystem ScoringRef;
 
     //List<string> colorSequence;
     string[] colorSeqArr = {"", "", ""};
@@ -30,6 +30,7 @@ public class SampleMessageListener : MonoBehaviour
     //[SerializeField] Enemies enemyScript;
     GameObject[] enemies;
     bool canAdd = true;
+    int reds, greens, blues;
 
     // Invoked when a line of data is received from the serial device.
     void OnMessageArrived(string msg)
@@ -49,7 +50,7 @@ public class SampleMessageListener : MonoBehaviour
             //Instantiate(projectile, transform.position, Quaternion.identity);
             //red has been seen
             
-            ScoringRef.resetMulti();
+            //ScoringRef.resetMulti();
             /*
             enemies = GameObject.FindGameObjectsWithTag("enemy");
             foreach(GameObject enemy in enemies){
@@ -70,7 +71,7 @@ public class SampleMessageListener : MonoBehaviour
         else if(green > red + 30 && green > blue + 30 && canAdd){
             //green has been seen
             
-            ScoringRef.resetMulti();
+            //ScoringRef.resetMulti();
             /*
             enemies = GameObject.FindGameObjectsWithTag("enemy");
             foreach(GameObject enemy in enemies){
@@ -90,7 +91,7 @@ public class SampleMessageListener : MonoBehaviour
         else if(blue > red + 30 && blue > green + 30 && canAdd){
             //blue has been seen
             
-            ScoringRef.resetMulti();
+            //ScoringRef.resetMulti();
             /*
             enemies = GameObject.FindGameObjectsWithTag("enemy");
             foreach(GameObject enemy in enemies){
@@ -112,38 +113,57 @@ public class SampleMessageListener : MonoBehaviour
         if(colorSeqArr[2] != ""){
             
             print("FIRST:" + colorSeqArr[0] + " SECOND: " + colorSeqArr[1] + " THIRD: " + colorSeqArr[2]);
-            if(colorSeqArr[0] == "r" && colorSeqArr[1] == "r" && colorSeqArr[2] == "r"){
-                //cast fireball
-                //  aoe, low damage, damage overtime, medium speed
+            foreach(string colorString in colorSeqArr){
+                if(colorString == "r"){
+                    reds++;
+                }
+                if(colorString == "g"){
+                    greens++;
+                }
+                if(colorString == "b"){
+                    blues++;
+                }
+            }
+            if(reds >= 3){
+                //  rrr
                 GameObject spawnProj = Instantiate(projs[0], launcher.transform.position, launcher.transform.rotation);
             }
-            if(colorSeqArr[0] == "g" && colorSeqArr[1] == "g" && colorSeqArr[2] == "g"){
-                //cast vine pierce
-                // slow, piercing, medium damage straight line
+            if(greens >= 3){
+                //  ggg
                 GameObject spawnProj = Instantiate(projs[1], launcher.transform.position, launcher.transform.rotation);
             }
-            if(colorSeqArr[0] == "b" && colorSeqArr[1] == "b" && colorSeqArr[2] == "b"){
-                //cast ice spear
-                //  fast, high damage, single target
+            if(blues >= 3){
+                //  bbb
                 GameObject spawnProj = Instantiate(projs[2], launcher.transform.position, launcher.transform.rotation);
             }
-            if(colorSeqArr[0] == "r" && colorSeqArr[1] == "g" && colorSeqArr[2] == "g"){
-                //cast poison cloud
-                //  aoe, damage overtime in an area, low damage, slow
+            if(blues == 2 && greens == 1){
+                //  bbg
+                GameObject spawnProj = Instantiate(projs[3], launcher.transform.position, launcher.transform.rotation);
             }
-            if(colorSeqArr[0] == "r" && colorSeqArr[1] == "b" && colorSeqArr[2] == "b"){
-                //cast lightning bolt
-                //  fast, chains, low damage
+            if(greens == 2 && blues == 1){
+                //  ggb
+                GameObject spawnProj = Instantiate(projs[4], launcher.transform.position, launcher.transform.rotation);
             }
-            if(colorSeqArr[0] == "g" && colorSeqArr[1] == "b" && colorSeqArr[2] == "b"){
-                //cast snowball
-                //  piercing, high damage, slow (rolls)
+            if(reds == 2 && greens == 1){
+                //  rrg
+                GameObject spawnProj = Instantiate(projs[5], launcher.transform.position, launcher.transform.rotation);
             }
-            if(colorSeqArr[0] == "r" && colorSeqArr[1] == "g" && colorSeqArr[2] == "b"){
-                //cast rainbow blast
-                //  damage overtime, piercing, fast
+            if(blues == 2 && reds == 1){
+                //  bbr
+                GameObject spawnProj = Instantiate(projs[6], launcher.transform.position, launcher.transform.rotation);
             }
-            // rrr, ggg, bbb, rgg, rbb, gbb, rgb
+            if(greens == 2 && reds == 1){
+                //  ggr
+                GameObject spawnProj = Instantiate(projs[7], launcher.transform.position, launcher.transform.rotation);
+            }
+            if(reds == 2 && blues == 1){
+                //  rrb
+                GameObject spawnProj = Instantiate(projs[8], launcher.transform.position, launcher.transform.rotation);
+            }
+            if(reds == 1 && greens == 1 && blues == 1){
+                //  rgb
+                GameObject spawnProj = Instantiate(projs[9], launcher.transform.position, launcher.transform.rotation);
+            }
 
             //for now to test, this will work
             //GameObject tempProj = Instantiate(projs[0], launcher.transform.position, Quaternion.identity);
@@ -151,6 +171,9 @@ public class SampleMessageListener : MonoBehaviour
             for(int i = 0; i < colorSeqArr.Length; i++){
                 colorSeqArr[i] = "";
             }
+            reds = 0;
+            greens = 0;
+            blues = 0;
             
         }
         

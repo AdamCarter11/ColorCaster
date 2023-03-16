@@ -7,6 +7,8 @@ public class ProjScript : MonoBehaviour
     [SerializeField] float speed = 300;
     [SerializeField] float aoeX, aoeY;  //scale value
     [SerializeField] int damage;
+    [SerializeField] float destructionDelay;
+    [SerializeField] int pierceHealth;
 
     private void Start() {
         transform.localScale = new Vector2(transform.localScale.x * aoeX, transform.localScale.y * aoeY);
@@ -20,7 +22,11 @@ public class ProjScript : MonoBehaviour
             //this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             
             other.gameObject.GetComponent<Enemies>().TakeDamage(damage);
-            Destroy(this.gameObject);
+            pierceHealth--;
+            if(pierceHealth <= 0){
+                Destroy(this.gameObject, destructionDelay);
+            }
+            
         }
         
     }
