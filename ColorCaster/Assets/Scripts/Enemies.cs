@@ -41,8 +41,8 @@ public class Enemies : MonoBehaviour
         else if(whatColor == "blue"){
             GetComponent<SpriteRenderer>().color = Color.blue;
             health = 1;
-            moveSpeed = moveSpeed * 1.2f;
-            transform.localScale *= .7f;
+            moveSpeed = moveSpeed * 1.1f;
+            //transform.localScale *= .7f;
         }
         
     }

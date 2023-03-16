@@ -22,6 +22,8 @@ public class SampleMessageListener : MonoBehaviour
     [SerializeField] GameObject projectile;
     [SerializeField] GameObject launcher;
     [SerializeField] GameObject[] projs;
+    [SerializeField] SpriteRenderer[] colorDisplays;
+    int whichDisplay = 0;
     //public ScoringSystem ScoringRef;
 
     //List<string> colorSequence;
@@ -61,6 +63,8 @@ public class SampleMessageListener : MonoBehaviour
             for(int i = 0; i < colorSeqArr.Length && canAdd; i++){
                 if(colorSeqArr[i] == ""){
                     colorSeqArr[i] = "r";
+                    colorDisplays[whichDisplay].color = Color.red;
+                    whichDisplay++;
                     //have to use a delay approach because the base color won't always be the same
                     StartCoroutine(colorPickDelay());
                     break;
@@ -68,7 +72,7 @@ public class SampleMessageListener : MonoBehaviour
             }
             //enemyScript.TriggerColorAction("red");
         }
-        else if(green > red + 30 && green > blue + 30 && canAdd){
+        else if(green > red + 25 && green > blue + 25 && canAdd){
             //green has been seen
             
             //ScoringRef.resetMulti();
@@ -82,6 +86,8 @@ public class SampleMessageListener : MonoBehaviour
             for(int i = 0; i < colorSeqArr.Length && canAdd; i++){
                 if(colorSeqArr[i] == ""){
                     colorSeqArr[i] = "g";
+                    colorDisplays[whichDisplay].color = Color.green;
+                    whichDisplay++;
                     StartCoroutine(colorPickDelay());
                     break;
                 }
@@ -102,6 +108,8 @@ public class SampleMessageListener : MonoBehaviour
             for(int i = 0; i < colorSeqArr.Length && canAdd; i++){
                 if(colorSeqArr[i] == ""){
                     colorSeqArr[i] = "b";
+                    colorDisplays[whichDisplay].color = Color.blue;
+                    whichDisplay++;
                     StartCoroutine(colorPickDelay());
                     break;
                 }
@@ -168,12 +176,7 @@ public class SampleMessageListener : MonoBehaviour
             //for now to test, this will work
             //GameObject tempProj = Instantiate(projs[0], launcher.transform.position, Quaternion.identity);
             //Destroy(tempProj, 5f);
-            for(int i = 0; i < colorSeqArr.Length; i++){
-                colorSeqArr[i] = "";
-            }
-            reds = 0;
-            greens = 0;
-            blues = 0;
+            resetColorSequence();
             
         }
         
@@ -195,5 +198,17 @@ public class SampleMessageListener : MonoBehaviour
             Debug.Log("Connection established");
         else
             Debug.Log("Connection attempt failed or disconnection detected");
+    }
+    public void resetColorSequence(){
+        for(int i = 0; i < colorSeqArr.Length; i++){
+                colorSeqArr[i] = "";
+            }
+            reds = 0;
+            greens = 0;
+            blues = 0;
+            whichDisplay = 0;
+            foreach(SpriteRenderer tempColorDisplay in colorDisplays){
+                tempColorDisplay.color = Color.white;
+            }
     }
 }

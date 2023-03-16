@@ -25,6 +25,7 @@ public class ScoringSystem : MonoBehaviour
     void Update()
     {
         ScoreValueUI.text = scoreValue.ToString();
+        healthText.text = "Health: " + playerHealth;
     }
     public void resetMulti(){
         multi = 1;
@@ -44,7 +45,7 @@ public class ScoringSystem : MonoBehaviour
             //Destroy(other.gameObject);
             other.gameObject.SetActive(false);
             playerHealth--;
-            healthText.text = "Health: " + playerHealth;
+            
             if(playerHealth <= 0){
                 //player loses
                 PlayerPrefs.SetInt("score", scoreValue);

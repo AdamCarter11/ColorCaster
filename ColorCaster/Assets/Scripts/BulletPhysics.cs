@@ -5,13 +5,14 @@ using UnityEngine;
 public class BulletPhysics : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private ScoringSystem player;
+    private SampleMessageListener resetSeq;
 
     [SerializeField] private float forceValue;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        resetSeq = GameObject.FindGameObjectWithTag("listener").GetComponent<SampleMessageListener>();
     }
 
     // Update is called once per frame
@@ -26,8 +27,7 @@ public class BulletPhysics : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            player = collision.GetComponent<ScoringSystem>();
-            player.playerHealth -= 1;
+            resetSeq.resetColorSequence();
             gameObject.SetActive(false);
             print("Hit Player");
              

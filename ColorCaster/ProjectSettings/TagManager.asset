@@ -15,6 +15,7 @@ TagManager:
   - ggr
   - rrb
   - rgb
+  - listener
   layers:
   - Default
   - TransparentFX
