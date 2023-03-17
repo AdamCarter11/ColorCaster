@@ -6,9 +6,9 @@ using UnityEngine;
 public class ForceField : MonoBehaviour
 {
     
-    private bool isForceField = false;
-    private float forceFieldTimer = 0;
-    private int forceFieldValue = 100;
+    internal bool isForceField = false;
+    internal float forceFieldTimer = 0;
+   
     
 
 
@@ -25,9 +25,7 @@ public class ForceField : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        slider = FindObjectOfType<ForceFieldSlider>();
-
-        slider.SetMaxForceField(forceFieldValue);
+   
 
     }
 
@@ -36,27 +34,22 @@ public class ForceField : MonoBehaviour
     {
         ForceFieldFunctionality();
 
-        slider.SetForceFieldValue(forceFieldValue);
+        
     }
 
     void ForceFieldFunctionality()
     {
-        if (Input.GetKeyDown(KeyCode.D) && forceFieldTimer == 0 && forceFieldValue > 0)
-        {
+        //if (Input.GetKeyDown(KeyCode.D) && forceFieldTimer == 0)
+        //{
 
-            isForceField = true;
-
-            forceFieldValue -= 10;
+        //    isForceField = true;
 
             
 
-           
 
-            
+        //    //ForceFieldSprite.col
 
-            //ForceFieldSprite.col
-
-        }
+        //}
         
         if (isForceField == true)
         {

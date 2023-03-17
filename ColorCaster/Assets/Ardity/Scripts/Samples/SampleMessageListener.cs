@@ -46,22 +46,25 @@ public class SampleMessageListener : MonoBehaviour
         int blue = int.Parse(splitRGBVals[2]);
         //print(red + " " + green + " " + blue);
 
-        
+
         //the 50 would be the threshold
-        if(red > green + 65 && red > blue + 65 && canAdd){
+        if (red > green + 65 && red > blue + 65 && canAdd)
+        {
             //Instantiate(projectile, transform.position, Quaternion.identity);
             //red has been seen
-            
+
             //ScoringRef.resetMulti();
             /*
             enemies = GameObject.FindGameObjectsWithTag("enemy");
             foreach(GameObject enemy in enemies){
                 enemy.GetComponent<Enemies>().TriggerColorAction("red");
-                
+
             }
             */
-            for(int i = 0; i < colorSeqArr.Length && canAdd; i++){
-                if(colorSeqArr[i] == ""){
+            for (int i = 0; i < colorSeqArr.Length && canAdd; i++)
+            {
+                if (colorSeqArr[i] == "")
+                {
                     colorSeqArr[i] = "r";
                     colorDisplays[whichDisplay].color = Color.red;
                     whichDisplay++;
@@ -72,19 +75,22 @@ public class SampleMessageListener : MonoBehaviour
             }
             //enemyScript.TriggerColorAction("red");
         }
-        else if(green > red + 25 && green > blue + 25 && canAdd){
+        else if (green > red + 25 && green > blue + 25 && canAdd)
+        {
             //green has been seen
-            
+
             //ScoringRef.resetMulti();
             /*
             enemies = GameObject.FindGameObjectsWithTag("enemy");
             foreach(GameObject enemy in enemies){
                 enemy.GetComponent<Enemies>().TriggerColorAction("green");
-                
+
             }
             */
-            for(int i = 0; i < colorSeqArr.Length && canAdd; i++){
-                if(colorSeqArr[i] == ""){
+            for (int i = 0; i < colorSeqArr.Length && canAdd; i++)
+            {
+                if (colorSeqArr[i] == "")
+                {
                     colorSeqArr[i] = "g";
                     colorDisplays[whichDisplay].color = Color.green;
                     whichDisplay++;
@@ -94,19 +100,22 @@ public class SampleMessageListener : MonoBehaviour
             }
             //enemyScript.TriggerColorAction("green");
         }
-        else if(blue > red + 30 && blue > green + 30 && canAdd){
+        else if (blue > red + 30 && blue > green + 30 && canAdd)
+        {
             //blue has been seen
-            
+
             //ScoringRef.resetMulti();
             /*
             enemies = GameObject.FindGameObjectsWithTag("enemy");
             foreach(GameObject enemy in enemies){
                 enemy.GetComponent<Enemies>().TriggerColorAction("blue");
-                
+
             }
             */
-            for(int i = 0; i < colorSeqArr.Length && canAdd; i++){
-                if(colorSeqArr[i] == ""){
+            for (int i = 0; i < colorSeqArr.Length && canAdd; i++)
+            {
+                if (colorSeqArr[i] == "")
+                {
                     colorSeqArr[i] = "b";
                     colorDisplays[whichDisplay].color = Color.blue;
                     whichDisplay++;
@@ -117,58 +126,73 @@ public class SampleMessageListener : MonoBehaviour
             //enemyScript.TriggerColorAction("blue");
         }
         //print(colorSequence.Count);
-        
-        if(colorSeqArr[2] != ""){
-            
+
+        if (colorSeqArr[2] != "")
+        {
+
             print("FIRST:" + colorSeqArr[0] + " SECOND: " + colorSeqArr[1] + " THIRD: " + colorSeqArr[2]);
-            foreach(string colorString in colorSeqArr){
-                if(colorString == "r"){
+            foreach (string colorString in colorSeqArr)
+            {
+                if (colorString == "r")
+                {
                     reds++;
                 }
-                if(colorString == "g"){
+                if (colorString == "g")
+                {
                     greens++;
                 }
-                if(colorString == "b"){
+                if (colorString == "b")
+                {
                     blues++;
                 }
             }
-            if(reds >= 3){
+            if (reds >= 3)
+            {
                 //  rrr
                 GameObject spawnProj = Instantiate(projs[0], launcher.transform.position, launcher.transform.rotation);
             }
-            if(greens >= 3){
+            if (greens >= 3)
+            {
                 //  ggg
                 GameObject spawnProj = Instantiate(projs[1], launcher.transform.position, launcher.transform.rotation);
             }
-            if(blues >= 3){
+            if (blues >= 3)
+            {
                 //  bbb
                 GameObject spawnProj = Instantiate(projs[2], launcher.transform.position, launcher.transform.rotation);
             }
-            if(blues == 2 && greens == 1){
+            if (blues == 2 && greens == 1)
+            {
                 //  bbg
                 GameObject spawnProj = Instantiate(projs[3], launcher.transform.position, launcher.transform.rotation);
             }
-            if(greens == 2 && blues == 1){
+            if (greens == 2 && blues == 1)
+            {
                 //  ggb
                 GameObject spawnProj = Instantiate(projs[4], launcher.transform.position, launcher.transform.rotation);
             }
-            if(reds == 2 && greens == 1){
+            if (reds == 2 && greens == 1)
+            {
                 //  rrg
                 GameObject spawnProj = Instantiate(projs[5], launcher.transform.position, launcher.transform.rotation);
             }
-            if(blues == 2 && reds == 1){
+            if (blues == 2 && reds == 1)
+            {
                 //  bbr
                 GameObject spawnProj = Instantiate(projs[6], launcher.transform.position, launcher.transform.rotation);
             }
-            if(greens == 2 && reds == 1){
+            if (greens == 2 && reds == 1)
+            {
                 //  ggr
                 GameObject spawnProj = Instantiate(projs[7], launcher.transform.position, launcher.transform.rotation);
             }
-            if(reds == 2 && blues == 1){
+            if (reds == 2 && blues == 1)
+            {
                 //  rrb
                 GameObject spawnProj = Instantiate(projs[8], launcher.transform.position, launcher.transform.rotation);
             }
-            if(reds == 1 && greens == 1 && blues == 1){
+            if (reds == 1 && greens == 1 && blues == 1)
+            {
                 //  rgb
                 GameObject spawnProj = Instantiate(projs[9], launcher.transform.position, launcher.transform.rotation);
             }
@@ -177,14 +201,15 @@ public class SampleMessageListener : MonoBehaviour
             //GameObject tempProj = Instantiate(projs[0], launcher.transform.position, Quaternion.identity);
             //Destroy(tempProj, 5f);
             resetColorSequence();
-            
+
         }
-        
-        player.GetComponent<SpriteRenderer>().color = new Color((float)red/255, (float)green/255, (float)blue/255);
+
+        player.GetComponent<SpriteRenderer>().color = new Color((float)red / 255, (float)green / 255, (float)blue / 255);
         //print(player.GetComponent<SpriteRenderer>().color.r);
         //square.GetComponent<SpriteRenderer>().color = new Color(180,0,180);
     }
-    IEnumerator colorPickDelay(){
+    IEnumerator colorPickDelay()
+    {
         canAdd = false;
         yield return new WaitForSeconds(1f);
         canAdd = true;
@@ -199,16 +224,19 @@ public class SampleMessageListener : MonoBehaviour
         else
             Debug.Log("Connection attempt failed or disconnection detected");
     }
-    public void resetColorSequence(){
-        for(int i = 0; i < colorSeqArr.Length; i++){
-                colorSeqArr[i] = "";
-            }
-            reds = 0;
-            greens = 0;
-            blues = 0;
-            whichDisplay = 0;
-            foreach(SpriteRenderer tempColorDisplay in colorDisplays){
-                tempColorDisplay.color = Color.white;
-            }
+    public void resetColorSequence()
+    {
+        for (int i = 0; i < colorSeqArr.Length; i++)
+        {
+            colorSeqArr[i] = "";
+        }
+        reds = 0;
+        greens = 0;
+        blues = 0;
+        whichDisplay = 0;
+        foreach (SpriteRenderer tempColorDisplay in colorDisplays)
+        {
+            tempColorDisplay.color = Color.white;
+        }
     }
 }
