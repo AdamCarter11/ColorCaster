@@ -518,7 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc5f48af2cffd747a079fe8c632e2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portName: COM5
+  portName: COM4
   baudRate: 9600
   messageListener: {fileID: 1431524740}
   reconnectionDelay: 1000
@@ -1026,7 +1026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3403121907137884812, guid: c516d1bb09aa6e542b19ba1ba85bcf0d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6160308643845531723, guid: c516d1bb09aa6e542b19ba1ba85bcf0d, type: 3}
       propertyPath: timeElasped

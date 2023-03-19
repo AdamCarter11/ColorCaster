@@ -9,7 +9,7 @@ public class PiezoMessageListner : MonoBehaviour
 
     void OnMessageArrived(string msg)
     {
-        print(msg.ToString().Length);
+        //print(msg.ToString().Length);
         if((msg.ToString().Length == 2 || msg.ToString().Length == 3) && forceField_ref.forceFieldTimer == 0)
         {
           forceField_ref.isForceField = true;

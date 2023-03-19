@@ -44,23 +44,13 @@ public class SampleMessageListener : MonoBehaviour
         int red = int.Parse(splitRGBVals[0]);
         int green = int.Parse(splitRGBVals[1]);
         int blue = int.Parse(splitRGBVals[2]);
-        //print(red + " " + green + " " + blue);
+        print(red + " " + green + " " + blue);
 
 
         //the 50 would be the threshold
+        
         if (red > green + 65 && red > blue + 65 && canAdd)
         {
-            //Instantiate(projectile, transform.position, Quaternion.identity);
-            //red has been seen
-
-            //ScoringRef.resetMulti();
-            /*
-            enemies = GameObject.FindGameObjectsWithTag("enemy");
-            foreach(GameObject enemy in enemies){
-                enemy.GetComponent<Enemies>().TriggerColorAction("red");
-
-            }
-            */
             for (int i = 0; i < colorSeqArr.Length && canAdd; i++)
             {
                 if (colorSeqArr[i] == "")
@@ -77,16 +67,6 @@ public class SampleMessageListener : MonoBehaviour
         }
         else if (green > red + 25 && green > blue + 25 && canAdd)
         {
-            //green has been seen
-
-            //ScoringRef.resetMulti();
-            /*
-            enemies = GameObject.FindGameObjectsWithTag("enemy");
-            foreach(GameObject enemy in enemies){
-                enemy.GetComponent<Enemies>().TriggerColorAction("green");
-
-            }
-            */
             for (int i = 0; i < colorSeqArr.Length && canAdd; i++)
             {
                 if (colorSeqArr[i] == "")
@@ -102,16 +82,6 @@ public class SampleMessageListener : MonoBehaviour
         }
         else if (blue > red + 30 && blue > green + 30 && canAdd)
         {
-            //blue has been seen
-
-            //ScoringRef.resetMulti();
-            /*
-            enemies = GameObject.FindGameObjectsWithTag("enemy");
-            foreach(GameObject enemy in enemies){
-                enemy.GetComponent<Enemies>().TriggerColorAction("blue");
-
-            }
-            */
             for (int i = 0; i < colorSeqArr.Length && canAdd; i++)
             {
                 if (colorSeqArr[i] == "")
@@ -201,9 +171,10 @@ public class SampleMessageListener : MonoBehaviour
             //GameObject tempProj = Instantiate(projs[0], launcher.transform.position, Quaternion.identity);
             //Destroy(tempProj, 5f);
             resetColorSequence();
+            
 
         }
-
+    
         player.GetComponent<SpriteRenderer>().color = new Color((float)red / 255, (float)green / 255, (float)blue / 255);
         //print(player.GetComponent<SpriteRenderer>().color.r);
         //square.GetComponent<SpriteRenderer>().color = new Color(180,0,180);
