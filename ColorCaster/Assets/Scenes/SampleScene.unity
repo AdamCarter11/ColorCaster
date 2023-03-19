@@ -288,7 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 0}
   forceFiedDuration: 2
-  radius: 3
+  radius: 1.5
   playerLayer:
     serializedVersion: 2
     m_Bits: 128

@@ -39,18 +39,15 @@ public class ForceField : MonoBehaviour
 
     void ForceFieldFunctionality()
     {
-        //if (Input.GetKeyDown(KeyCode.D) && forceFieldTimer == 0)
-        //{
+        if (Input.GetKeyDown(KeyCode.D) && forceFieldTimer == 0)
+        {
 
-        //    isForceField = true;
+            isForceField = true;
 
-            
+            //ForceFieldSprite.col
 
+        }
 
-        //    //ForceFieldSprite.col
-
-        //}
-        
         if (isForceField == true)
         {
             forceFieldTimer += Time.deltaTime;
